@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLBHModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="QLBHModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="QLBHModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderDetails" EntityType="QLBHModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="QLBHModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="QLBHModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeProducts" EntityType="QLBHModel.Store.TypeProducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="QLBHModel.Store.Users" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CatID" />
+    </Key>
+    <Property Name="CatID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CatName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="ProID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Total" Type="money" Nullable="false" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProID" />
+    </Key>
+    <Property Name="ProID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TinyDes" Type="nvarchar" MaxLength="100" />
+    <Property Name="FullDes" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="CatID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="PageView" Type="int" />
+    <Property Name="SaleQuantity" Type="int" />
+    <Property Name="TypeID" Type="int" />
+    <Property Name="Origin" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TypeProducts">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="nchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="f_ID" />
+    </Key>
+    <Property Name="f_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="f_Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="f_Password" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="f_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="f_Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="f_DOB" Type="datetime" Nullable="false" />
+    <Property Name="f_Permission" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,23 @@
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\QLBH.dll
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\QLBH.pdb
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\BotDetect.dll
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\EntityFramework.dll
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\BotDetect.pdb
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\EntityFramework.xml
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\obj\Release\QLBH.dll
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\obj\Release\QLBH.pdb
+C:\Users\Khuyên\Documents\Visual Studio 2012\Projects\QLBH\QLBH\QLBH\obj\Release\QLBH.csprojResolveAssemblyReference.cache
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\QLBH.dll.config
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\QLBH.dll
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\QLBH.pdb
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\BotDetect.dll
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\EntityFramework.dll
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\BotDetect.pdb
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\EntityFramework.xml
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\obj\Release\QLBH.csprojResolveAssemblyReference.cache
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\obj\Release\QLBH.dll
+D:\COURSES\Lap trinh Web 2 (ASP NET - MVC)\ASP NET\QLBH\QLBH\QLBH\obj\Release\QLBH.pdb

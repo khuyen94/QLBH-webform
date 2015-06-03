@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLBHModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="QLBHModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="QLBHModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderDetails" EntityType="QLBHModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="QLBHModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="QLBHModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TypeProducts" EntityType="QLBHModel.Store.TypeProducts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="QLBHModel.Store.Users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CatName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ProID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Total" Type="money" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProID" />
+          </Key>
+          <Property Name="ProID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TinyDes" Type="nvarchar" MaxLength="100" />
+          <Property Name="FullDes" Type="ntext" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="CatID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PageView" Type="int" />
+          <Property Name="SaleQuantity" Type="int" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="Origin" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TypeProducts">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="f_ID" />
+          </Key>
+          <Property Name="f_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="f_Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="f_Password" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="f_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="f_Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="f_DOB" Type="datetime" Nullable="false" />
+          <Property Name="f_Permission" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLBHModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QLBHEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="QLBHModel.Category" />
+          <EntitySet Name="OrderDetails" EntityType="QLBHModel.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="QLBHModel.Order" />
+          <EntitySet Name="Products" EntityType="QLBHModel.Product" />
+          <EntitySet Name="TypeProducts" EntityType="QLBHModel.TypeProduct" />
+          <EntitySet Name="Users" EntityType="QLBHModel.User" />
+          <AssociationSet Name="CategoryProduct" Association="QLBHModel.CategoryProduct">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="TypeProductProduct" Association="QLBHModel.TypeProductProduct">
+            <End Role="TypeProduct" EntitySet="TypeProducts" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="ProductOrderDetail" Association="QLBHModel.ProductOrderDetail">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="UserOrder" Association="QLBHModel.UserOrder">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="OrderOrderDetail" Association="QLBHModel.OrderOrderDetail">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CatName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Products" Relationship="QLBHModel.CategoryProduct" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ProID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Product" Relationship="QLBHModel.ProductOrderDetail" FromRole="OrderDetail" ToRole="Product" />
+          <NavigationProperty Name="Order" Relationship="QLBHModel.OrderOrderDetail" FromRole="OrderDetail" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="User" Relationship="QLBHModel.UserOrder" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderDetails" Relationship="QLBHModel.OrderOrderDetail" FromRole="Order" ToRole="OrderDetail" />
+          <Property Type="Int32" Name="Status" />
+          </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProID" />
+          </Key>
+          <Property Name="ProID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TinyDes" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FullDes" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CatID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PageView" Type="Int32" />
+          <Property Name="SaleQuantity" Type="Int32" />
+          <Property Name="TypeID" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="QLBHModel.CategoryProduct" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="TypeProduct" Relationship="QLBHModel.TypeProductProduct" FromRole="Product" ToRole="TypeProduct" />
+          <NavigationProperty Name="OrderDetails" Relationship="QLBHModel.ProductOrderDetail" FromRole="Product" ToRole="OrderDetail" />
+          <Property Type="String" Name="Origin" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TypeProduct">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Products" Relationship="QLBHModel.TypeProductProduct" FromRole="TypeProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="f_ID" />
+          </Key>
+          <Property Name="f_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="f_Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="f_Password" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="f_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="f_Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="f_DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="f_Permission" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="QLBHModel.UserOrder" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <Association Name="CategoryProduct">
+          <End Type="QLBHModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="QLBHModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TypeProductProduct">
+          <End Type="QLBHModel.TypeProduct" Role="TypeProduct" Multiplicity="0..1" />
+          <End Type="QLBHModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeProduct">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductOrderDetail">
+          <End Type="QLBHModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="QLBHModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserOrder">
+          <End Type="QLBHModel.User" Role="User" Multiplicity="1" />
+          <End Type="QLBHModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="f_ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderOrderDetail">
+          <End Type="QLBHModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="QLBHModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLBHModelStoreContainer" CdmEntityContainer="QLBHEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="QLBHModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="QLBHModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProID" ColumnName="ProID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="QLBHModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="QLBHModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="ProID" ColumnName="ProID" />
+                <ScalarProperty Name="ProName" ColumnName="ProName" />
+                <ScalarProperty Name="TinyDes" ColumnName="TinyDes" />
+                <ScalarProperty Name="FullDes" ColumnName="FullDes" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PageView" ColumnName="PageView" />
+                <ScalarProperty Name="SaleQuantity" ColumnName="SaleQuantity" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeProducts">
+            <EntityTypeMapping TypeName="QLBHModel.TypeProduct">
+              <MappingFragment StoreEntitySet="TypeProducts">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="QLBHModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="f_ID" ColumnName="f_ID" />
+                <ScalarProperty Name="f_Username" ColumnName="f_Username" />
+                <ScalarProperty Name="f_Password" ColumnName="f_Password" />
+                <ScalarProperty Name="f_Name" ColumnName="f_Name" />
+                <ScalarProperty Name="f_Email" ColumnName="f_Email" />
+                <ScalarProperty Name="f_DOB" ColumnName="f_DOB" />
+                <ScalarProperty Name="f_Permission" ColumnName="f_Permission" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
